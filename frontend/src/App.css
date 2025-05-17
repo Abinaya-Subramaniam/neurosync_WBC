@@ -1,0 +1,239 @@
+/* Base Styles */
+body {
+  font-family: 'Comic Sans MS', 'Arial Rounded MT Bold', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f8ff;
+  color: #333;
+}
+
+.App {
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.App-header {
+  background-color: #4a90e2;
+  color: white;
+  padding: 1rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Scenario List */
+.scenario-list {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.scenario-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.scenario-card {
+  background: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.scenario-card:hover {
+  transform: translateY(-5px);
+}
+
+.scenario-icon {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
+  background-size: cover;
+}
+
+.scenario-icon.classroom {
+  background-color: #ffd700;
+  background-image: url('classroom-icon.svg');
+}
+
+.scenario-icon.playground {
+  background-color: #98fb98;
+  background-image: url('playground-icon.svg');
+}
+
+/* Scenario Panel */
+.scenario {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.back-button {
+  background: #4a90e2;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+
+.scenario-panel {
+  background: white;
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.scenario-visual {
+  min-height: 200px;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  opacity: 0.3;
+  border-radius: 10px;
+}
+
+.background-image.classroom {
+  background-color: #fffacd;
+}
+
+.background-image.playground {
+  background-color: #e0ffff;
+}
+
+.speech-bubble {
+  position: relative;
+  background: white;
+  border: 2px solid #4a90e2;
+  border-radius: 15px;
+  padding: 1rem;
+  max-width: 80%;
+  margin: 0 auto;
+  font-size: 1.2rem;
+}
+
+.speech-bubble:after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  border-width: 15px 15px 0;
+  border-style: solid;
+  border-color: #4a90e2 transparent;
+  transform: translateX(-50%);
+}
+
+.options {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.option {
+  background: #4a90e2;
+  color: white;
+  border: none;
+  padding: 1rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.option:hover {
+  background: #3a7bc8;
+}
+
+.progress {
+  margin-top: 2rem;
+  font-weight: bold;
+  color: #4a90e2;
+}
+
+/* Feedback Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.feedback-modal {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  max-width: 500px;
+  width: 90%;
+  text-align: center;
+}
+
+.feedback-modal.correct {
+  border-top: 10px solid #4CAF50;
+}
+
+.feedback-modal.incorrect {
+  border-top: 10px solid #f44336;
+}
+
+.next-button {
+  background: #4a90e2;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+/* Back Home Button */
+.back-home-btn {
+  display: inline-block;
+  margin: 24px 0 16px 0;
+  padding: 10px 22px;
+  background: var(--baby-blue, #A7D3F1);
+  color: #222;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(74, 111, 165, 0.10);
+  border: none;
+  transition: background 0.2s, color 0.2s, transform 0.15s;
+  cursor: pointer;
+}
+
+.back-home-btn:hover {
+  background: var(--deep-blue, #4A6FA5);
+  color: #fff;
+  transform: translateY(-2px) scale(1.04);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .scenario-grid {
+      grid-template-columns: 1fr;
+  }
+}
