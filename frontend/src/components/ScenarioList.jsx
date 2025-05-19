@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Scenario from './Scenario';
 import '../styles/ScenarioList.css';
+import Navbar from './Navbar';
 
 const ScenarioList = () => {
     const [scenarios, setScenarios] = useState([]);
+    const [sensoryMode, setSensoryMode] = useState(false);
     const [loading, setLoading] = useState(true);
     const [selectedScenario, setSelectedScenario] = useState(null);
     const [hoveredCard, setHoveredCard] = useState(null);
@@ -38,12 +40,9 @@ const ScenarioList = () => {
         return <Scenario 
             scenario={selectedScenario} 
             onBack={() => setSelectedScenario(null)} 
-        />;
-    }
-
-    return (
-        <div className="scenario-list-container">
-            <Link to="/" className="back-home-btn">← Back to Home</Link>
+        />;    }    return (
+        <div className={`scenario-list-container page-wrapper ${sensoryMode ? 'sensory-mode' : ''}`}>
+            <Navbar sensoryMode={sensoryMode} />
             <header className="scenario-header">
                 <h1 className="animate-text-gradient">Social Sense Adventure!</h1>
                 <p className="subtitle animate-float">Choose a scenario to practice your super social skills:</p>

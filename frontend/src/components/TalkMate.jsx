@@ -1,8 +1,10 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import Navbar from './Navbar';
 
 const Talkmate = () => {
   const navigate = useNavigate();
+  const [sensoryMode, setSensoryMode] = useState(false);
 
   useEffect(() => {
     const injectScript = document.createElement("script");
@@ -41,18 +43,39 @@ const Talkmate = () => {
     };
   }, []);
 
-  return (
-    <div style={{
-      minHeight: '100vh',
+  return (    <div className="page-wrapper" style={{
       background: 'linear-gradient(135deg, #f3e8ff 0%, #e0c3fc 100%)',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'flex-start',
       fontFamily: 'Rubik, Comic Neue, Arial Rounded MT Bold, sans-serif',
       position: 'relative',
       overflow: 'hidden',
+      alignItems: 'center',
     }}>
+      <Navbar sensoryMode={sensoryMode} />
+      {/* Decorative floating paint splashes */}
+      <div style={{
+        position: 'absolute',
+        top: 0, left: 0, width: '100%', height: '100%',
+        pointerEvents: 'none', zIndex: 0
+      }}>
+        {[...Array(14)].map((_, i) => (
+          <span key={i} style={{
+            position: 'absolute',
+            left: `${Math.random() * 100}%`,
+            top: `${Math.random() * 100}%`,
+            fontSize: `${Math.random() * 2 + 1.5}rem`,
+            opacity: 0.10 + Math.random() * 0.18,
+            color: ['#A7D3F1', '#D8CFF8', '#FFF4A3', '#C7F2B4', '#FF00FF', '#FFA500'][i % 6],
+            filter: 'blur(1.5px)',
+            animation: `floatSplash 10s ${Math.random() * 8}s infinite alternate ease-in-out`,
+          }}>●</span>
+        ))}
+        <style>{`
+          @keyframes floatSplash {
+            0% { transform: translateY(0) scale(1); }
+            100% { transform: translateY(-40px) scale(1.1); }
+          }
+        `}</style>
+      </div>
       {/* Decorative floating stars */}
       <div style={{
         position: 'absolute',
@@ -96,7 +119,6 @@ const Talkmate = () => {
             <div style={{ color: '#6b7280', fontWeight: 500, fontSize: '1.1rem' }}>Your friendly chat buddy</div>
           </div>
         </div>
-        <Link to="/" className="back-home-btn" style={{ margin: 0, fontSize: '1.1rem', padding: '10px 22px' }}>🏠 Back to Home</Link>
       </div>
 
       {/* Welcome Card */}

@@ -3,10 +3,12 @@ import { ReactSketchCanvas } from "react-sketch-canvas";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import "./DrawingBoard.css";
+import Navbar from './Navbar';
 
 export default function DrawingBoard() {
   const [aiResponse, setAiResponse] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [sensoryMode, setSensoryMode] = useState(false);
   const [color, setColor] = useState("#000000");
   const [brushSize, setBrushSize] = useState(4);
   const [showPopup, setShowPopup] = useState(false);
@@ -61,19 +63,16 @@ export default function DrawingBoard() {
     setShowPopup(false);
     setMufasaMessage("Let's try another drawing!");
   };
-
-  return (
-    <div style={{
-      minHeight: '100vh',
-      background: 'linear-gradient(135deg, #a7d3f1 0%, #d8cff8 100%)',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'flex-start',
+  return (    <div className={`drawing-board page-wrapper ${sensoryMode ? 'sensory-mode' : ''}`} style={{
+      background: sensoryMode ? 
+        'linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%)' : 
+        'linear-gradient(135deg, #a7d3f1 0%, #d8cff8 100%)',
       fontFamily: 'Comic Neue, Rubik, Arial Rounded MT Bold, sans-serif',
       position: 'relative',
       overflow: 'hidden',
+      alignItems: 'center',
     }}>
+      <Navbar sensoryMode={sensoryMode} />
       {/* Decorative floating paint splashes */}
       <div style={{
         position: 'absolute',
@@ -114,10 +113,8 @@ export default function DrawingBoard() {
           <img src="https://i.imgur.com/uqAKtQM.png" alt="Mufasa" style={{ width: 60, height: 60, borderRadius: '50%', boxShadow: '0 2px 12px #a7d3f1a0', background: '#fff' }} />
           <div>
             <h1 style={{ fontSize: '2.2rem', fontWeight: 800, color: '#4a6fa5', margin: 0, letterSpacing: 1 }}>DrawEase</h1>
-            <div style={{ color: '#495057', fontWeight: 500, fontSize: '1.1rem' }}>Magic Drawing Pad</div>
-          </div>
+            <div style={{ color: '#495057', fontWeight: 500, fontSize: '1.1rem' }}>Magic Drawing Pad</div>          </div>
         </div>
-        <Link to="/" className="back-home-btn" style={{ margin: 0, fontSize: '1.1rem', padding: '10px 22px' }}>🏠 Back to Home</Link>
       </div>
 
       {/* Main Drawing App Card */}

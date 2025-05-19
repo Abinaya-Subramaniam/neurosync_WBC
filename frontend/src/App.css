@@ -14,11 +14,28 @@ body {
   flex-direction: column;
 }
 
-.App-header {
-  background-color: #4a90e2;
-  color: white;
-  padding: 1rem;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+/* Page Wrapper */
+.page-wrapper {
+  padding-top: 64px; /* Height of navbar */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Common navbar styles */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 12px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(8px);
+  z-index: 1000; /* Ensure navbar is always on top */
+  box-shadow: 0 4px 20px rgba(74, 111, 165, 0.12);
 }
 
 /* Scenario List */
@@ -206,29 +223,6 @@ body {
   font-size: 1rem;
   margin-top: 1rem;
   cursor: pointer;
-}
-
-/* Back Home Button */
-.back-home-btn {
-  display: inline-block;
-  margin: 24px 0 16px 0;
-  padding: 10px 22px;
-  background: var(--baby-blue, #A7D3F1);
-  color: #222;
-  border-radius: 30px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  text-decoration: none;
-  box-shadow: 0 2px 8px rgba(74, 111, 165, 0.10);
-  border: none;
-  transition: background 0.2s, color 0.2s, transform 0.15s;
-  cursor: pointer;
-}
-
-.back-home-btn:hover {
-  background: var(--deep-blue, #4A6FA5);
-  color: #fff;
-  transform: translateY(-2px) scale(1.04);
 }
 
 /* Responsive */

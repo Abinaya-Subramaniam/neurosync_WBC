@@ -1,9 +1,14 @@
-/* ScenarioList.css
+/* ScenarioList.css */
 .scenario-list-container {
-  padding: 20px;
+  width: 100%;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.scenario-content {
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  font-family: 'Comic Sans MS', cursive, sans-serif;
+  padding: 20px;
 }
 
 .scenario-header {
@@ -300,11 +305,11 @@
 
 /* Specific scenario image styles */
 .classroom .card-image {
-  background-image: url('https://i.imgur.com/idoeNRI.png');
+  background-image: url('https://i.imgur.com/MGwCs6G.jpeg');
 }
 
 .playground .card-image {
-  background-image: url('https://i.imgur.com/uZCtS5P.png');
+  background-image: url('https://i.imgur.com/kTXmk6y.jpeg');
 }
 
 .homework .card-image {

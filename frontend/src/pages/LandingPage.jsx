@@ -9,8 +9,8 @@ function LandingPage() {
   const [starsCollected, setStarsCollected] = useState(0);
   const [sensoryMode, setSensoryMode] = useState(false);
   const [superpowerRevealed, setSuperpowerRevealed] = useState(false);
-  const [handprints, setHandprints] = useState([]);
-  const [mufasaPosition, setMufasaPosition] = useState('right'); // 'right' or 'left'
+  const [handprints, setHandprints] = useState([]);  const [mufasaPosition, setMufasaPosition] = useState('right'); // 'right' or 'left'
+  const [isCelebrating, setIsCelebrating] = useState(false);
   
   const messages = [
     "Hello, explorer! Ready for an adventure?",
@@ -100,53 +100,115 @@ function LandingPage() {
 
   return (
     <div className={`neuro-app ${sensoryMode ? 'sensory-mode' : ''}`}>
-      <div className="floating-elements">
-        {[...Array(20)].map((_, i) => (
-          <div 
-            key={i} 
-            className={`floating-element ${i % 4 === 0 ? 'circle' : i % 4 === 1 ? 'triangle' : i % 4 === 2 ? 'square' : 'star'}`}
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 5}s`,
-              animationDuration: `${Math.random() * 10 + 10}s`
-            }}
-          />
-        ))}
-      </div>
+      {/* Floating elements - only visible in vibrant mode */}
+      {!sensoryMode && (
+        <div className="floating-elements">
+          {[...Array(20)].map((_, i) => (
+            <div 
+              key={i} 
+              className={`floating-element ${i % 4 === 0 ? 'circle' : i % 4 === 1 ? 'triangle' : i % 4 === 2 ? 'square' : 'star'}`}
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 5}s`,
+                animationDuration: `${Math.random() * 10 + 10}s`,
+                opacity: sensoryMode ? 0.1 : (0.10 + Math.random() * 0.18)
+              }}
+            />
+          ))}
+        </div>
+      )}
 
-      {/* Sensory Mode Toggle */}
+      {/* Sensory Mode Toggle with enhanced styling */}
       <div className="sensory-toggle-container">
         <button 
           className={`sensory-toggle ${sensoryMode ? 'active' : ''}`}
-          onClick={() => setSensoryMode(!sensoryMode)}
+          onClick={() => {
+            setSensoryMode(!sensoryMode);
+            // Only add mode change message if Mufasa was showing a default message
+            if (messages.includes(mufasaMessage)) {
+              setMufasaMessage(sensoryMode ? 
+                "Welcome to Vibrant Mode! Let's have some colorful fun! 🌈" : 
+                "Entering Calm Mode for a peaceful experience 🌙"
+              );
+            }
+          }}
+          style={{
+            background: sensoryMode ? '#f8f9fa' : 'rgba(255,255,255,0.9)',
+            boxShadow: sensoryMode ? 
+              '0 2px 8px rgba(0,0,0,0.1)' : 
+              '0 4px 15px rgba(124,58,237,0.15)',
+            transition: 'all 0.3s ease',
+            color: sensoryMode ? '#7c3aed' : '#4a6fa5',
+            border: sensoryMode ? '2px solid #e9ecef' : '2px solid rgba(255,255,255,0.2)'
+          }}
         >
-          <span className="toggle-icon">{sensoryMode ? '🌙' : '☀️'}</span>
-          {sensoryMode ? 'Calm Mode' : 'Vibrant Mode'}
+          <span className="toggle-icon" style={{
+            marginRight: '8px',
+            fontSize: '1.2rem'
+          }}>{sensoryMode ? '🌙' : '☀️'}</span>
+          <span style={{
+            fontWeight: '600',
+            letterSpacing: '0.3px'
+          }}>{sensoryMode ? 'Calm Mode' : 'Vibrant Mode'}</span>
         </button>
       </div>
 
-
-      {/* Main Navigation */}
-      <nav className="main-nav">
-        <div className="nav-logo">
-          <span className="logo-icon">🧠</span>
-          <span className="logo-text">NeuroSync</span>
+      {/* Main Navigation with enhanced conditional styling */}
+      <nav className="main-nav" style={{
+        background: sensoryMode ? 
+          'linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%)' : 
+          'linear-gradient(135deg, #a7d3f1 0%, #d8cff8 100%)',
+        boxShadow: sensoryMode ?
+          '0 2px 12px rgba(0,0,0,0.03)' :
+          '0 4px 20px rgba(124,58,237,0.12)',
+        transition: 'all 0.4s ease',
+        borderBottom: sensoryMode ? '1px solid #f1f3f5' : 'none'
+      }}>        <div className="nav-logo">
+          <img src="https://i.imgur.com/1VN0WF9.png" alt="NeuroSync Logo" className="logo-icon" />          <span className="logo-text" style={{
+            color: sensoryMode ? '#2D3748' : '#1a365d',
+            fontWeight: '800',
+            letterSpacing: '0.5px',
+            transition: 'all 0.3s ease'
+          }}>NeuroSync</span>
         </div>
         <div className="nav-links">
-          <Link to="/talk" className="nav-link">🗣️ Talkmate</Link>
-          <Link to="/draw" className="nav-link">🎨 DrawEase</Link>
-          <Link to="/scenarios" className="nav-link">🤝 SocialSense</Link>
-          <span className="nav-link" style={{ opacity: 0.5, cursor: 'not-allowed' }}>😊 FaceCues (Coming Soon)</span>
+          <Link to="/talk" className="nav-link" style={{
+            color: sensoryMode ? '#4a5568' : '#495057',
+            background: sensoryMode ? '#ffffff' : 'rgba(255,255,255,0.9)',
+            boxShadow: sensoryMode ? '0 1px 3px rgba(0,0,0,0.05)' : '0 2px 8px rgba(124,58,237,0.08)',
+            transition: 'all 0.3s ease'
+          }}>🗣️ Talkmate</Link>
+          <Link to="/draw" className="nav-link" style={{
+            color: sensoryMode ? '#4a5568' : '#495057',
+            background: sensoryMode ? '#ffffff' : 'rgba(255,255,255,0.9)',
+            boxShadow: sensoryMode ? '0 1px 3px rgba(0,0,0,0.05)' : '0 2px 8px rgba(124,58,237,0.08)',
+            transition: 'all 0.3s ease'
+          }}>🎨 DrawEase</Link>
+          <Link to="/scenarios" className="nav-link" style={{
+            color: sensoryMode ? '#4a5568' : '#495057',
+            background: sensoryMode ? '#ffffff' : 'rgba(255,255,255,0.9)',
+            boxShadow: sensoryMode ? '0 1px 3px rgba(0,0,0,0.05)' : '0 2px 8px rgba(124,58,237,0.08)',
+            transition: 'all 0.3s ease'
+          }}>🤝 SocialSense</Link>
+          <span className="nav-link" style={{ 
+            opacity: 0.5, 
+            cursor: 'not-allowed',
+            color: sensoryMode ? '#4a5568' : '#495057',
+            background: sensoryMode ? '#ffffff' : 'rgba(255,255,255,0.9)',
+            boxShadow: sensoryMode ? '0 1px 3px rgba(0,0,0,0.05)' : '0 2px 8px rgba(124,58,237,0.08)',
+            transition: 'all 0.3s ease'
+          }}>😊 FaceCues (Coming Soon)</span>
         </div>
       </nav>
 
       {/* Hero Section */}
-      <section className="hero-section">
+      <section className="hero-section" style={{
+        background: sensoryMode ? 'none' : 'rgba(255,255,255,0.05)'
+      }}>
         <div className="hero-content">
-          <div className="hero-text">
-            <h1>
-              <span className="gradient-text">Unlock</span> Your<br />
+          <div className="hero-text">            <h1>
+              <span className="gradient-text">Unlock</span> <span className="highlight-text">Your</span><br />
               <span className="gradient-text">Superpowers</span>
             </h1>
             <p className="hero-subtitle">
@@ -182,26 +244,56 @@ function LandingPage() {
 
       {/* Features Section */}
       <section className="features-section">
-        <h2 className="section-title">
+        <h2 className="section-title" style={{
+          color: sensoryMode ? '#495057' : '#4a6fa5',
+          transition: 'color 0.3s ease'
+        }}>
           <span className="title-decoration">✦</span> Your Learning Tools
         </h2>
         <div className="features-grid">
-          <Link to="/draw" className="feature-card" style={{ textDecoration: 'none', color: 'inherit' }}>
+          {/* Feature cards with conditional styling */}          <Link to="/draw" className="feature-card" style={{ 
+            textDecoration: 'none', 
+            color: 'inherit',
+            background: sensoryMode ? '#ffffff' : 'rgba(255,255,255,0.93)',
+            boxShadow: sensoryMode ? 
+              '0 2px 8px rgba(0,0,0,0.05)' : 
+              '0 8px 32px rgba(74,111,165,0.10)'
+          }}>
             <div className="feature-icon" style={{ backgroundColor: '#A7D3F1' }}>🎨</div>
             <h3>DrawEase</h3>
             <p>Express yourself with creative drawing activities</p>
-          </Link>
-          <Link to="/talk" className="feature-card" style={{ textDecoration: 'none', color: 'inherit' }}>
+          </Link>          <Link to="/talk" className="feature-card" style={{ 
+            textDecoration: 'none', 
+            color: 'inherit',
+            background: sensoryMode ? '#ffffff' : 'rgba(255,255,255,0.93)',
+            boxShadow: sensoryMode ? 
+              '0 2px 8px rgba(0,0,0,0.05)' : 
+              '0 8px 32px rgba(74,111,165,0.10)'
+          }}>
             <div className="feature-icon" style={{ backgroundColor: '#D8CFF8' }}>🗣️</div>
             <h3>Talkmate</h3>
             <p>Practice conversations and communication skills</p>
-          </Link>
-          <Link to="/scenarios" className="feature-card" style={{ textDecoration: 'none', color: 'inherit' }}>
+          </Link>          <Link to="/scenarios" className="feature-card" style={{ 
+            textDecoration: 'none', 
+            color: 'inherit',
+            background: sensoryMode ? '#ffffff' : 'rgba(255,255,255,0.93)',
+            boxShadow: sensoryMode ? 
+              '0 2px 8px rgba(0,0,0,0.05)' : 
+              '0 8px 32px rgba(74,111,165,0.10)'
+          }}>
             <div className="feature-icon" style={{ backgroundColor: '#C7F2B4' }}>🤝</div>
             <h3>SocialSense</h3>
             <p>Build friendship skills in a safe space</p>
-          </Link>
-          <div className="feature-card" style={{ opacity: 0.5, cursor: 'not-allowed' }}>
+          </Link>          <div className="feature-card" style={{ 
+            opacity: 0.5, 
+            cursor: 'not-allowed',
+            background: sensoryMode ? '#ffffff' : 'rgba(255,255,255,0.93)',
+            boxShadow: sensoryMode ? 
+              '0 2px 8px rgba(0,0,0,0.05)' : 
+              '0 8px 32px rgba(74,111,165,0.10)',
+            textDecoration: 'none',
+            color: 'inherit'
+          }}>
             <div className="feature-icon" style={{ backgroundColor: '#FFF4A3' }}>😊</div>
             <h3>FaceCues</h3>
             <p>Coming soon: Learn to read and express emotions</p>
@@ -245,21 +337,21 @@ function LandingPage() {
         name: "Albert Einstein",
         achievement: "He loved asking big questions about space and stars. His ideas helped us understand how the world works!",
         img: "https://upload.wikimedia.org/wikipedia/commons/d/d3/Albert_Einstein_Head.jpg",
-        color: "#A7D3F1", 
+        color: "#68BDF7", 
         emoji: "🔭"
       },
       {
         name: "Temple Grandin",
         achievement: "She found smart ways to help animals feel happy and safe, using her kind heart and clever thinking.",
         img: "https://i.imgur.com/SomBTMM.jpeg",
-        color: "#C7F2B4", 
+        color: "#7EEC4F", 
         emoji: "🐄"
       },
       {
         name: "Mozart",
         achievement: "As a kid, he made beautiful music that still makes people smile all around the world.",
         img: "https://upload.wikimedia.org/wikipedia/commons/1/1e/Wolfgang-amadeus-mozart_1.jpg",
-        color: "#D8CFF8", // Soft Lavender
+        color: "#A58CFF", 
         emoji: "🎵"
       }
     ].map(({ name, achievement, img, color, emoji }) => (
@@ -307,13 +399,37 @@ function LandingPage() {
           </div>
           <p className="challenge-description">
             Share a friendly smile with a family member, friend, or even Mufasa!
-          </p>
-          <div className="challenge-meter">
+          </p>          <div className="challenge-meter">
             <div className="meter-progress" style={{ width: '40%' }}></div>
           </div>
-          <button className="challenge-button">
+          <button 
+            className={`challenge-button ${isCelebrating ? 'celebrating' : ''}`}
+            onClick={() => {
+              setIsCelebrating(true);
+              setMufasaMessage("Fantastic job! You're making the world a brighter place! 🌟");
+              // Play celebration sound
+              new Audio('/sounds/success.mp3').play().catch(() => {});
+              // Reset celebration after 5 seconds
+              setTimeout(() => setIsCelebrating(false), 5000);
+            }}
+          >
             I Did It! <span className="confetti">🎊</span>
           </button>
+          {isCelebrating && (
+            <div className="celebration-overlay">
+              {[...Array(20)].map((_, i) => (
+                <div
+                  key={i}
+                  className="celebration-particle"
+                  style={{
+                    left: `${Math.random() * 100}%`,
+                    animationDelay: `${Math.random() * 0.5}s`,
+                    backgroundColor: ['#FFD700', '#FF69B4', '#4a90e2', '#98FB98'][Math.floor(Math.random() * 4)]
+                  }}
+                />
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
