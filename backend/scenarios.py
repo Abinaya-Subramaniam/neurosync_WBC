@@ -4,6 +4,7 @@ scenarios_data = [
         "title": "Classroom Participation",
         "description": "The teacher asks a question to the class.",
         "background": "classroom",
+        "image": "https://i.imgur.com/MGwCs6G.jpeg",
         "panels": [
             {
                 "text": "The teacher asks, 'Who knows the answer to this math problem?'",
@@ -19,8 +20,8 @@ scenarios_data = [
                 "question": "How should you react?",
                 "options": [
                     {"text": "Smile and wait for the next question", "correct": True, "feedback": "Perfect! This shows you're engaged and ready to continue."},
-                    {"text": "Jump up and down excitedly", "correct": False, "feedback": "It's great to be excited, but jumping might distract the class."},
-                    {"text": "Say 'I'm the smartest!'", "correct": False, "feedback": "It's good to be confident, but we should also be considerate of others."}
+                    {"text": "Say 'I'm the smartest!'", "correct": False, "feedback": "It's good to be confident, but we should also be considerate of others."},
+                    {"text": "Jump up and down excitedly", "correct": False, "feedback": "It's great to be excited, but jumping might distract the class."}
                 ]
             },
             {
@@ -36,9 +37,9 @@ scenarios_data = [
                 "text": "You don't understand the math problem on the board.",
                 "question": "What should you do?",
                 "options": [
-                    {"text": "Raise your hand and ask for help", "correct": True, "feedback": "Great job! Asking questions is how we learn."},
+                    {"text": "Make noise to distract others", "correct": False, "feedback": "If you're confused, asking politely is the best solution."},
                     {"text": "Pretend you understand", "correct": False, "feedback": "It's okay to need help - teachers want to help you!"},
-                    {"text": "Make noise to distract others", "correct": False, "feedback": "If you're confused, asking politely is the best solution."}
+                    {"text": "Raise your hand and ask for help", "correct": True, "feedback": "Great job! Asking questions is how we learn."}
                 ]
             },
             {
@@ -54,8 +55,8 @@ scenarios_data = [
                 "text": "You finish your work early.",
                 "question": "What should you do?",
                 "options": [
-                    {"text": "Read quietly or do extra work", "correct": True, "feedback": "Excellent choice! Using time wisely is smart."},
                     {"text": "Announce you're done", "correct": False, "feedback": "It's great to finish, but let's not distract others."},
+                    {"text": "Read quietly or do extra work", "correct": True, "feedback": "Excellent choice! Using time wisely is smart."},
                     {"text": "Get up and walk around", "correct": False, "feedback": "Staying seated until everyone finishes is polite."}
                 ]
             },
@@ -63,9 +64,9 @@ scenarios_data = [
                 "text": "Your pencil breaks during a test.",
                 "question": "What should you do?",
                 "options": [
-                    {"text": "Raise your hand and ask for a new one", "correct": True, "feedback": "Good thinking! Asking politely solves the problem."},
+                    {"text": "Stop working", "correct": False, "feedback": "The teacher can help if you ask quietly."},
                     {"text": "Yell 'My pencil broke!'", "correct": False, "feedback": "Raising your hand is quieter and more polite."},
-                    {"text": "Stop working", "correct": False, "feedback": "The teacher can help if you ask quietly."}
+                    {"text": "Raise your hand and ask for a new one", "correct": True, "feedback": "Good thinking! Asking politely solves the problem."}
                 ]
             },
             {
@@ -102,6 +103,7 @@ scenarios_data = [
         "title": "Playground Interaction",
         "description": "You want to join a game at recess.",
         "background": "playground",
+        "image": "https://i.imgur.com/kTXmk6y.jpeg",
         "panels": [
             {
                 "text": "You see kids playing your favorite game.",
@@ -116,8 +118,8 @@ scenarios_data = [
                 "text": "They say 'Yes, you can play!'",
                 "question": "What should you do?",
                 "options": [
-                    {"text": "Say 'Thanks!' and join the game", "correct": True, "feedback": "Perfect! Being grateful makes friends."},
                     {"text": "Take over the game", "correct": False, "feedback": "Join in without changing the rules - it's more fun for everyone."},
+                    {"text": "Say 'Thanks!' and join the game", "correct": True, "feedback": "Perfect! Being grateful makes friends."},
                     {"text": "Ignore them and play alone", "correct": False, "feedback": "They invited you - joining shows you appreciate it."}
                 ]
             },
@@ -134,9 +136,9 @@ scenarios_data = [
                 "text": "You see someone sitting alone at recess.",
                 "question": "What could you do?",
                 "options": [
-                    {"text": "Ask if they want to play", "correct": True, "feedback": "That's very kind! Including others is wonderful."},
+                    {"text": "Laugh at them", "correct": False, "feedback": "Being kind to everyone makes the playground happy."},
                     {"text": "Ignore them", "correct": False, "feedback": "Reaching out might make their day better."},
-                    {"text": "Laugh at them", "correct": False, "feedback": "Being kind to everyone makes the playground happy."}
+                    {"text": "Ask if they want to play", "correct": True, "feedback": "That's very kind! Including others is wonderful."}
                 ]
             },
             {
@@ -161,8 +163,8 @@ scenarios_data = [
                 "text": "The bell rings to end recess.",
                 "question": "What should you do?",
                 "options": [
-                    {"text": "Stop playing and line up calmly", "correct": True, "feedback": "Perfect! Following directions keeps everyone safe."},
                     {"text": "Keep playing until the teacher comes", "correct": False, "feedback": "Listening to the bell helps transitions go smoothly."},
+                    {"text": "Stop playing and line up calmly", "correct": True, "feedback": "Perfect! Following directions keeps everyone safe."},
                     {"text": "Run to be first in line", "correct": False, "feedback": "Walking safely prevents accidents."}
                 ]
             },
@@ -188,9 +190,9 @@ scenarios_data = [
                 "text": "You see someone cheating at a game.",
                 "question": "What should you do?",
                 "options": [
-                    {"text": "Calmly remind them of the rules", "correct": True, "feedback": "Good approach! Gentle reminders help keep games fair."},
+                    {"text": "Start cheating too", "correct": False, "feedback": "Following rules makes games more fun for everyone."},
                     {"text": "Yell 'Cheater!'", "correct": False, "feedback": "Staying calm helps solve problems better."},
-                    {"text": "Start cheating too", "correct": False, "feedback": "Following rules makes games more fun for everyone."}
+                    {"text": "Calmly remind them of the rules", "correct": True, "feedback": "Good approach! Gentle reminders help keep games fair."}
                 ]
             }
         ]
@@ -200,6 +202,7 @@ scenarios_data = [
         "title": "Asking for Help",
         "description": "You are stuck on a homework question.",
         "background": "homework",
+        "image": "https://i.imgur.com/p5cMZUX.jpeg",
         "panels": [
             {
                 "text": "You're doing your homework and can't solve a math problem.",
@@ -293,14 +296,12 @@ scenarios_data = [
             }
         ]
     },
-    # Continuing with scenarios 4 through 10 (each with 10 panels)...
-    # Note: For brevity, I'll show the structure for one more scenario
-    # but all scenarios would follow the same 10-panel pattern
     {
         "id": 4,
         "title": "Making New Friends",
         "description": "You're new in school and want to make friends.",
         "background": "cafeteria",
+        "image": "https://i.imgur.com/PU9pUVy.png",
         "panels": [
             {
                 "text": "You walk into the cafeteria and see a group eating lunch.",
@@ -352,6 +353,7 @@ scenarios_data = [
     "title": "Helping Someone",
     "description": "A student drops books in the hallway.",
     "background": "hallway",
+    "image": "https://i.imgur.com/p5cMZUX.jpeg",
     "panels": [
         {
             "text": "They look upset and need help.",
