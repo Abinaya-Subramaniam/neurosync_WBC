@@ -67,12 +67,15 @@ const ScenarioList = () => {
                         }}
                     >
                         <div className="card-content">
-                            <div className={`scenario-icon ${scenario.background} animate-pulse-slow`}>
-                                <div className="icon-bg"></div>
-                                <div className="icon-emoji">
-                                    {scenario.icon || '🌟'}
-                                </div>
-                            </div>
+                            {scenario.image && (
+                                <img 
+                                    src={scenario.image} 
+                                    alt={scenario.title + ' image'} 
+                                    className="scenario-card-image"
+                                    style={{ width: '100%', maxHeight: '140px', objectFit: 'cover', borderRadius: '16px', marginBottom: '10px' }}
+                                />
+                            )}
+                           
                             <h3 className="animate-text-glow">{scenario.title}</h3>
                             <p>{scenario.description}</p>
                             <button className="play-button animate-bounce">

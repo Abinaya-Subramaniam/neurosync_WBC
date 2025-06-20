@@ -1,262 +1,89 @@
-/* ScenarioList.css */
-.scenario-list-container {
-  width: 100%;
-  font-family: 'Comic Sans MS', cursive, sans-serif;
+/* Autism-Friendly ScenarioList.css */
+:root {
+  --primary-blue: #4a6fa5;
+  --light-blue: #a7d3f1;
+  --soft-pink: #fad0c4;
+  --mint-green: #c7f2b4;
+  --text-dark: #333;
+  --text-medium: #666;
+  --text-light: #fff;
+  --card-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
-
-.scenario-content {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-.scenario-header {
-  text-align: center;
-  margin-bottom: 30px;
-  animation: fadeIn 1s ease-in;
-}
-
-.scenario-header h1 {
-  color: #4a6fa5;
-  font-size: 2.5rem;
-  margin-bottom: 10px;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-}
-
-.subtitle {
-  color: #666;
-  font-size: 1.2rem;
-}
-
-.scenario-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 25px;
-  padding: 20px;
-}
-
-.scenario-card {
-  background: white;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-  transition: all 0.3s ease;
-  cursor: pointer;
-  position: relative;
-}
-
-.scenario-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-}
-
-.scenario-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 10px;
-  background: linear-gradient(90deg, #ff9a9e 0%, #fad0c4 100%);
-}
-
-.scenario-card:nth-child(2n)::before {
-  background: linear-gradient(90deg, #a1c4fd 0%, #c2e9fb 100%);
-}
-
-.scenario-card:nth-child(3n)::before {
-  background: linear-gradient(90deg, #84fab0 0%, #8fd3f4 100%);
-}
-
-.card-content {
-  padding: 20px;
-  text-align: center;
-}
-
-.scenario-icon {
-  width: 100px;
-  height: 100px;
-  margin: 0 auto 20px;
-  position: relative;
-}
-
-.icon-bg {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  transition: all 0.3s ease;
-}
-
-.scenario-card:hover .icon-bg {
-  transform: scale(1.1) rotate(10deg);
-}
-
-.scenario-card h3 {
-  color: #4a6fa5;
-  margin-bottom: 10px;
-  font-size: 1.5rem;
-}
-
-.scenario-card p {
-  color: #666;
-  margin-bottom: 20px;
-  font-size: 1rem;
-}
-
-.play-button {
-  background: #ff9a9e;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 50px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-weight: bold;
-}
-.classroom {
-  background-image: url('https://i.imgur.com/VcQpoyh.jpg'); 
-}
-
-.playground {
-  background-image: url('https://i.imgur.com/sxD2yRX.png'); 
-}
-
-.dining {
-  background-image: url('https://i.imgur.com/ZOuUwQb.png'); 
-}
-
-.library {
-  background-image: url('https://i.imgur.com/7P6LqKv.png'); 
-}
-
-
-.play-button:hover {
-  background: #ff7b81;
-  transform: scale(1.05);
-}
-
-.loading-screen {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  font-family: 'Comic Sans MS', cursive, sans-serif;
-}
-
-.spinner {
-  width: 50px;
-  height: 50px;
-  border: 5px solid #f3f3f3;
-  border-top: 5px solid #ff9a9e;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-  margin-bottom: 20px;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-} */
-
 
 .scenario-list-container {
   padding: 20px;
   max-width: 1200px;
   margin: 0 auto;
-  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-family: 'Comic Sans MS', 'Arial Rounded MT Bold', sans-serif;
+  background-color: #f9f9f9;
 }
 
 .scenario-header {
   text-align: center;
   margin-bottom: 30px;
-  animation: fadeIn 1s ease-in;
+  padding: 20px;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: var(--card-shadow);
 }
 
 .scenario-header h1 {
-  color: #4a6fa5;
-  font-size: 2.5rem;
+  color: var(--primary-blue);
+  font-size: 2rem;
   margin-bottom: 10px;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+  font-weight: normal;
 }
 
 .subtitle {
-  color: #666;
-  font-size: 1.2rem;
+  color: var(--text-medium);
+  font-size: 1.1rem;
+  line-height: 1.4;
 }
 
 .scenario-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 25px;
-  padding: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 10px;
 }
 
 .scenario-card {
   background: white;
-  border-radius: 20px;
+  border-radius: 15px;
   overflow: hidden;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-  transition: all 0.3s ease;
-  cursor: pointer;
+  box-shadow: var(--card-shadow);
+  transition: all 0.2s ease;
   position: relative;
   display: flex;
   flex-direction: column;
+  border: 2px solid #e0e0e0;
 }
 
 .scenario-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-}
-
-.scenario-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 10px;
-  background: linear-gradient(90deg, #ff9a9e 0%, #fad0c4 100%);
-}
-
-.scenario-card:nth-child(2n)::before {
-  background: linear-gradient(90deg, #a1c4fd 0%, #c2e9fb 100%);
-}
-
-.scenario-card:nth-child(3n)::before {
-  background: linear-gradient(90deg, #84fab0 0%, #8fd3f4 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
 }
 
 .card-image {
-  height: 180px;
+  height: 160px;
   background-size: cover;
   background-position: center;
   position: relative;
+  border-bottom: 2px solid #e0e0e0;
 }
 
 .card-content {
-  padding: 20px;
+  padding: 15px;
   text-align: center;
   flex: 1;
   display: flex;
   flex-direction: column;
 }
 
-.scenario-icon {
-  width: 60px;
-  height: 60px;
-  margin: -40px auto 15px;
+/* .scenario-icon {
+  width: 50px;
+  height: 50px;
+  margin: -30px auto 10px;
   position: relative;
   z-index: 2;
   background: white;
@@ -264,79 +91,92 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
+  box-shadow: var(--card-shadow);
+  border: 2px solid #e0e0e0;
+} */
 
-.scenario-icon img {
-  width: 40px;
-  height: 40px;
-}
+/* .scenario-icon img {
+  width: 30px;
+  height: 30px;
+} */
 
 .scenario-card h3 {
-  color: #4a6fa5;
+  color: var(--primary-blue);
   margin-bottom: 10px;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
+  font-weight: normal;
 }
 
 .scenario-card p {
-  color: #666;
-  margin-bottom: 20px;
+  color: var(--text-medium);
+  margin-bottom: 15px;
   font-size: 0.9rem;
+  line-height: 1.4;
   flex: 1;
 }
 
 .play-button {
-  background: #ff9a9e;
-  color: white;
+  background: var(--primary-blue);
+  color: var(--text-light);
   border: none;
-  padding: 10px 20px;
-  border-radius: 50px;
-  font-size: 1rem;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.9rem;
   cursor: pointer;
-  transition: all 0.3s ease;
-  font-weight: bold;
+  transition: all 0.2s ease;
   margin-top: auto;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid var(--primary-blue);
 }
 
 .play-button:hover {
-  background: #ff7b81;
-  transform: scale(1.05);
+  background: var(--text-light);
+  color: var(--primary-blue);
 }
 
 /* Specific scenario image styles */
 .classroom .card-image {
-  background-image: url('https://i.imgur.com/MGwCs6G.jpeg');
-}
-
-.playground .card-image {
   background-image: url('https://i.imgur.com/kTXmk6y.jpeg');
 }
 
+.playground .card-image {
+  background-image: url('hhttps://i.imgur.com/kTXmk6y.jpeg');
+}
+
 .homework .card-image {
-  background-image: url('https://i.imgur.com/8xc5OdH.jpg');
+  background-image: url('https://i.imgur.com/kTXmk6y.jpeg');
 }
 
 .cafeteria .card-image {
   background-image: url('https://i.imgur.com/xMpoEaF.jpg');
 }
 
+/* Loading animation */
 .loading-screen {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
-  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-family: 'Comic Sans MS', 'Arial Rounded MT Bold', sans-serif;
+  background-color: #f9f9f9;
 }
 
 .spinner {
-  width: 50px;
-  height: 50px;
-  border: 5px solid #f3f3f3;
-  border-top: 5px solid #ff9a9e;
+  width: 40px;
+  height: 40px;
+  border: 4px solid #e0e0e0;
+  border-top: 4px solid var(--primary-blue);
   border-radius: 50%;
-  animation: spin 1s linear infinite;
-  margin-bottom: 20px;
+  animation: spin 1.5s linear infinite;
+  margin-bottom: 15px;
+}
+
+.loading-message {
+  color: var(--text-medium);
+  font-size: 1rem;
 }
 
 @keyframes spin {
@@ -344,7 +184,38 @@
   100% { transform: rotate(360deg); }
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+/* Accessibility features */
+.scenario-card:focus {
+  outline: 3px solid var(--light-blue);
+}
+
+/* Reduced motion alternative */
+@media (prefers-reduced-motion: reduce) {
+  .scenario-card {
+    transition: none;
+  }
+  
+  .spinner {
+    animation: none;
+    border-top-color: transparent;
+  }
+  
+  .play-button:hover {
+    transform: none;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .scenario-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .scenario-header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .card-image {
+    height: 140px;
+  }
 }
