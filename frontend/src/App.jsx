@@ -4,6 +4,7 @@ import ScenarioList from './components/ScenarioList';
 import DrawingBoard from './components/DrawingCanvas';  
 import Talkmate from './components/TalkMate';
 import LandingPage from './pages/LandingPage';
+import FaceCues from './components/FaceCues';
 import './App.css';
 
 
@@ -17,6 +18,7 @@ function App() {
                         <Route path="/draw" element={<DrawingBoard />} />
                         <Route path="/talk" element={<Talkmate />} />
                         <Route path="/scenarios" element={<ScenarioList />} />
+                        <Route path="/facecues" element={<FaceCues />} />
                     </Routes>
                 </main>
             </div>

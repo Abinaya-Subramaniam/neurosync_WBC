@@ -63,19 +63,18 @@ const Navbar = ({ sensoryMode }) => {
         >
           🤝 SocialSense
         </Link>
-        <span 
-          className="nav-link"
-          style={{ 
-            opacity: 0.5, 
-            cursor: 'not-allowed',
+        <Link 
+          to="/facecues" 
+          className={`nav-link ${currentPath === '/facecues' ? 'active' : ''}`}
+          style={{
             color: sensoryMode ? '#4a5568' : '#495057',
             background: sensoryMode ? '#ffffff' : 'rgba(255,255,255,0.9)',
             boxShadow: sensoryMode ? '0 1px 3px rgba(0,0,0,0.05)' : '0 2px 8px rgba(124,58,237,0.08)',
             transition: 'all 0.3s ease'
           }}
         >
-          😊 FaceCues (Coming Soon)
-        </span>
+          😊 FaceCues
+        </Link>
       </div>
     </nav>
   );
