@@ -15,7 +15,7 @@ export default function DrawingBoard() {
   const [mufasaMessage, setMufasaMessage] = useState("Draw something and I'll guess what it is!");
   const [showMufasa, setShowMufasa] = useState(true);
   const canvasRef = useRef(null);
-  const navigate = useNavigate();
+  const  navigate = useNavigate();
   //git check
 
   const colors = [
