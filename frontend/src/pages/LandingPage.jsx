@@ -11,6 +11,7 @@ function LandingPage() {
   const [superpowerRevealed, setSuperpowerRevealed] = useState(false);
   const [handprints, setHandprints] = useState([]);  const [mufasaPosition, setMufasaPosition] = useState('right'); // 'right' or 'left'
   const [isCelebrating, setIsCelebrating] = useState(false);
+  //resolve git issue 
   
   const messages = [
     "Hello, explorer! Ready for an adventure?",
