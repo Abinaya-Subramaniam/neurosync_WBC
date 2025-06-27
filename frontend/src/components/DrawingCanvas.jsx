@@ -16,6 +16,7 @@ export default function DrawingBoard() {
   const [showMufasa, setShowMufasa] = useState(true);
   const canvasRef = useRef(null);
   const navigate = useNavigate();
+  //git check
 
   const colors = [
     "#000000", "#FF0000", "#00FF00", "#0000FF", 
