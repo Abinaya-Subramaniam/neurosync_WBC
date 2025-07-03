@@ -164,12 +164,22 @@ function LandingPage() {
           '0 4px 20px rgba(124,58,237,0.12)',
         transition: 'all 0.4s ease',
         borderBottom: sensoryMode ? '1px solid #f1f3f5' : 'none'
-      }}>        <div className="nav-logo">
-          <img src="https://i.imgur.com/1VN0WF9.png" alt="NeuroSync Logo" className="logo-icon" />          <span className="logo-text" style={{
-            color: sensoryMode ? '#2D3748' : '#1a365d',
-            fontWeight: '800',
-            letterSpacing: '0.5px',
-            transition: 'all 0.3s ease'
+      }}>        <div className="nav-logo" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <img src="https://i.imgur.com/1VN0WF9.png" alt="NeuroSync Logo" className="logo-icon" style={{ height: '48px', width: '48px', objectFit: 'contain' }} />
+          <span className="logo-text" style={{
+            background: 'linear-gradient(90deg, #0f97ed 0%,rgb(92, 189, 97) 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            color: 'transparent',
+            fontWeight: '700',
+            fontFamily: 'Poppins, Montserrat, Arial, sans-serif',
+            fontSize: '1.7rem',
+            letterSpacing: '1px',
+            padding: '2px 12px',
+            borderRadius: '8px',
+            transition: 'all 0.3s ease',
+            textShadow: '0 2px 8px rgba(15,151,237,0.10)'
           }}>NeuroSync</span>
         </div>
         <div className="nav-links">
@@ -191,14 +201,12 @@ function LandingPage() {
             boxShadow: sensoryMode ? '0 1px 3px rgba(0,0,0,0.05)' : '0 2px 8px rgba(124,58,237,0.08)',
             transition: 'all 0.3s ease'
           }}>🤝 SocialSense</Link>
-          <span className="nav-link" style={{ 
-            opacity: 0.5, 
-            cursor: 'not-allowed',
+          <Link to="/facecues" className="nav-link" style={{
             color: sensoryMode ? '#4a5568' : '#495057',
             background: sensoryMode ? '#ffffff' : 'rgba(255,255,255,0.9)',
             boxShadow: sensoryMode ? '0 1px 3px rgba(0,0,0,0.05)' : '0 2px 8px rgba(124,58,237,0.08)',
             transition: 'all 0.3s ease'
-          }}>😊 FaceCues (Coming Soon)</span>
+          }}>😊 FaceCues</Link>
         </div>
       </nav>
 
@@ -284,20 +292,18 @@ function LandingPage() {
             <div className="feature-icon" style={{ backgroundColor: '#C7F2B4' }}>🤝</div>
             <h3>SocialSense</h3>
             <p>Build friendship skills in a safe space</p>
-          </Link>          <div className="feature-card" style={{ 
-            opacity: 0.5, 
-            cursor: 'not-allowed',
+          </Link>          <Link to="/facecues" className="feature-card" style={{ 
+            textDecoration: 'none', 
+            color: 'inherit',
             background: sensoryMode ? '#ffffff' : 'rgba(255,255,255,0.93)',
             boxShadow: sensoryMode ? 
               '0 2px 8px rgba(0,0,0,0.05)' : 
-              '0 8px 32px rgba(74,111,165,0.10)',
-            textDecoration: 'none',
-            color: 'inherit'
+              '0 8px 32px rgba(74,111,165,0.10)'
           }}>
             <div className="feature-icon" style={{ backgroundColor: '#FFF4A3' }}>😊</div>
             <h3>FaceCues</h3>
-            <p>Coming soon: Learn to read and express emotions</p>
-          </div>
+            <p>Learn to read and express emotions</p>
+          </Link>
         </div>
       </section>
 

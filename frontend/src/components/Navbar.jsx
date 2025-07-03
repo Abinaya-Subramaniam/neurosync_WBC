@@ -17,13 +17,22 @@ const Navbar = ({ sensoryMode }) => {
       transition: 'all 0.4s ease',
       borderBottom: sensoryMode ? '1px solid #f1f3f5' : 'none'
     }}>
-      <Link to="/" className="nav-logo">
-        <img src="https://i.imgur.com/1VN0WF9.png" alt="NeuroSync Logo" className="logo-icon" />
+      <Link to="/" className="nav-logo" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+        <img src="https://i.imgur.com/1VN0WF9.png" alt="NeuroSync Logo" className="logo-icon" style={{ height: '48px', width: '48px', objectFit: 'contain' }} />
         <span className="logo-text" style={{
-          color: sensoryMode ? '#2D3748' : '#1a365d',
-          fontWeight: '800',
-          letterSpacing: '0.5px',
-          transition: 'all 0.3s ease'
+          background: 'linear-gradient(90deg, #0f97ed 0%, rgb(92, 189, 97) 100%)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          backgroundClip: 'text',
+          color: 'transparent',
+          fontWeight: '700',
+          fontFamily: 'Poppins, Montserrat, Arial, sans-serif',
+          fontSize: '1.7rem',
+          letterSpacing: '1px',
+          padding: '2px 12px',
+          borderRadius: '8px',
+          transition: 'all 0.3s ease',
+          textShadow: '0 2px 8px rgba(15,151,237,0.10)'
         }}>NeuroSync</span>
       </Link>
       <div className="nav-links">
@@ -63,19 +72,20 @@ const Navbar = ({ sensoryMode }) => {
         >
           🤝 SocialSense
         </Link>
-        <span 
-          className="nav-link"
-          style={{ 
-            opacity: 0.5, 
-            cursor: 'not-allowed',
+        <Link 
+          to="/facecues" 
+          className={`nav-link ${currentPath === '/facecues' ? 'active' : ''}`}
+          style={{
             color: sensoryMode ? '#4a5568' : '#495057',
             background: sensoryMode ? '#ffffff' : 'rgba(255,255,255,0.9)',
             boxShadow: sensoryMode ? '0 1px 3px rgba(0,0,0,0.05)' : '0 2px 8px rgba(124,58,237,0.08)',
-            transition: 'all 0.3s ease'
+            transition: 'all 0.3s ease',
+            opacity: 1,
+            cursor: 'pointer'
           }}
         >
-          😊 FaceCues (Coming Soon)
-        </span>
+          😊 FaceCues
+        </Link>
       </div>
     </nav>
   );
