@@ -8,6 +8,8 @@ import base64
 import numpy as np
 from tensorflow.keras.models import load_model
 import tensorflow as tf
+from deepface import DeepFace
+
 
 # --- Import your scenario functions ---
 from scenarios import get_scenario, get_all_scenarios
@@ -77,7 +79,7 @@ async def check_answer(scenario_id: int, request: AnswerRequest):
         "feedback": option["feedback"]
     }
 
-# --- Route: ML Prediction ---
+
 @app.post("/predict")
 def predict(data: ImageData):
     try:
@@ -102,5 +104,42 @@ def predict(data: ImageData):
         response = friendly_responses.get(label, f"That looks like a {label}!")
         return {"response": response}
 
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+# @app.post("/facecues/")
+# async def predict_emotion(data: ImageData):
+#     try:
+#         # Decode image from base64
+#         header, encoded = data.image.split(",", 1)
+#         image_bytes = base64.b64decode(encoded)
+#         image = Image.open(io.BytesIO(image_bytes)).convert("RGB")
+#         image_np = np.array(image)
+
+#         # Analyze emotion using DeepFace
+#         result = DeepFace.analyze(img_path=image_np, actions=['emotion'], enforce_detection=False)
+#         detected_emotion = result[0]['dominant_emotion']
+
+#         return {"emotion": detected_emotion}
+#     except Exception as e:
+#         raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.post("/facecues/")
+async def predict_emotion(data: ImageData):
+    try:
+        header, encoded = data.image.split(",", 1)
+        image_bytes = base64.b64decode(encoded)
+        image = Image.open(io.BytesIO(image_bytes)).convert("RGB")
+        image_np = np.array(image)
+
+        # ✅ Convert RGB to BGR for OpenCV compatibility
+        import cv2
+        image_bgr = cv2.cvtColor(image_np, cv2.COLOR_RGB2BGR)
+
+        result = DeepFace.analyze(img_path=image_bgr, actions=['emotion'], enforce_detection=False)
+        detected_emotion = result[0]['dominant_emotion']
+
+        return {"emotion": detected_emotion}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
