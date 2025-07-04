@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import Navbar from './Navbar';
+import ThreeDRobot from './ThreeDRobot';
 
 const Talkmate = () => {
   const navigate = useNavigate();
@@ -33,29 +34,37 @@ const Talkmate = () => {
             radius: 3,
             additionalStylesheetUrl: "https://files.bpcontent.cloud/2025/04/27/09/20250427093104-3GOZMJB0.css",
             allowFileUpload: true,
+            layout: "embedded", 
+            showConversationsButton: false, 
+            enableReset: false,
+            enableTranscriptDownload: false,
+            enableConversationDeletion: false, 
           }
         });
       }
     };
 
     return () => {
-      document.body.removeChild(injectScript);
+      if (injectScript.parentNode) {
+        document.body.removeChild(injectScript);
+      }
     };
   }, []);
 
-  return (    <div className="page-wrapper" style={{
+  return (
+    <div className="page-wrapper" style={{
       background: 'linear-gradient(135deg, #f3e8ff 0%, #e0c3fc 100%)',
       fontFamily: 'Rubik, Comic Neue, Arial Rounded MT Bold, sans-serif',
       position: 'relative',
       overflow: 'hidden',
-      alignItems: 'center',
+      alignItems: 'center'
     }}>
       <Navbar sensoryMode={sensoryMode} />
-      {/* Decorative floating paint splashes */}
+      
       <div style={{
         position: 'absolute',
         top: 0, left: 0, width: '100%', height: '100%',
-        pointerEvents: 'none', zIndex: 0
+        pointerEvents: 'none'
       }}>
         {[...Array(14)].map((_, i) => (
           <span key={i} style={{
@@ -76,11 +85,11 @@ const Talkmate = () => {
           }
         `}</style>
       </div>
-      {/* Decorative floating stars */}
+      
       <div style={{
         position: 'absolute',
         top: 0, left: 0, width: '100%', height: '100%',
-        pointerEvents: 'none', zIndex: 0
+        pointerEvents: 'none',
       }}>
         {[...Array(18)].map((_, i) => (
           <span key={i} style={{
@@ -102,15 +111,12 @@ const Talkmate = () => {
         `}</style>
       </div>
 
-      {/* Header & Back Button */}
       <div style={{
         width: '100%',
         maxWidth: 1200,
-        display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
         padding: '2.5rem 2rem 1.5rem 2rem',
-        zIndex: 2,
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '1.2rem' }}>
           <img src="https://files.bpcontent.cloud/2025/04/27/08/20250427081918-BYQBJS80.jpeg" alt="Talkmate" style={{ width: 60, height: 60, borderRadius: '50%', boxShadow: '0 2px 12px #d8b4f8a0', background: '#fff' }} />
@@ -121,7 +127,6 @@ const Talkmate = () => {
         </div>
       </div>
 
-      {/* Welcome Card */}
       <div style={{
         background: 'rgba(255,255,255,0.85)',
         borderRadius: 24,
@@ -131,7 +136,6 @@ const Talkmate = () => {
         maxWidth: 500,
         width: '90%',
         textAlign: 'center',
-        zIndex: 2,
         position: 'relative',
       }}>
         <h2 style={{ fontSize: '1.7rem', color: '#4f46e5', fontWeight: 700, marginBottom: 12 }}>Welcome, Little Star! ✨</h2>
@@ -140,26 +144,16 @@ const Talkmate = () => {
         </p>
       </div>
 
-      {/* Chat Interface */}
-      <div style={{
-        flex: 1,
-        width: '100%',
-        maxWidth: 900,
-        minHeight: 480,
-        background: 'rgba(255,255,255,0.92)',
-        borderRadius: 24,
-        boxShadow: '0 8px 32px rgba(124,58,237,0.10)',
-        display: 'flex',
-        alignItems: 'stretch',
-        justifyContent: 'center',
-        position: 'relative',
-        zIndex: 2,
-        marginBottom: 40,
-      }}>
-        <div id="webchat" style={{ flex: 1, minHeight: 480, borderRadius: 24, overflow: 'hidden' }} />
+      <div style={{ display: 'flex', width: '100%', height: 600 }}>
+        <div style={{ flex: 1, height: '100%' }}>
+          <div id="webchat" style={{ width: '100%', height: '100%', borderRadius: 24, overflow: 'hidden', backgroundColor: '#fff' }} />
+        </div>
+        <div style={{ flex: 1, height: '100%', overflow: 'hidden', display: 'flex', alignItems: 'flex-end', justifyContent: 'center',borderRadius: 24}}>
+          <ThreeDRobot />
+        </div>
       </div>
 
-      {/* Fun footer */}
+
       <div style={{
         width: '100%',
         textAlign: 'center',
@@ -168,10 +162,37 @@ const Talkmate = () => {
         fontSize: '1.1rem',
         letterSpacing: 0.5,
         marginBottom: 18,
-        zIndex: 2,
+        marginTop: 40,
       }}>
         <span role="img" aria-label="sparkle">✨</span> Talk, ask, and have fun! <span role="img" aria-label="sparkle">✨</span>
       </div>
+
+      <style>{`
+        #webchat, #webchat .bpWebchat, #webchat .bpw-root {
+          position: unset !important;
+          width: 100% !important;
+          height: 100% !important;
+          margin: 0 !important;
+          border-radius: 24px !important;
+          box-shadow: none !important;
+          background: transparent !important;
+          font-size: 1.25rem !important;
+        }
+        #webchat .bpw-message-content, #webchat .bpw-composer {
+          font-size: 1.15rem !important;
+        }
+        #webchat .bpFab, #webchat .bpw-floating-button, #webchat .bpw-header__close {
+          display: none !important;
+        }
+        #webchat .bpw-floating-container {
+          display: none !important;
+        }
+        #webchat {
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+        }
+      `}</style>
     </div>
   );
 };
